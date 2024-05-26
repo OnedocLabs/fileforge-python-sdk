@@ -22,8 +22,7 @@ from fileforge.client import Fileforge
 
 client = Fileforge(
     api_key="YOUR_API_KEY",
-    username="YOUR_USERNAME",
-    password="YOUR_PASSWORD",
+    api_key="YOUR_API_KEY",
 )
 ```
 <!-- End Usage  -->
@@ -36,8 +35,7 @@ from fileforge.client import AsyncFileforge
 
 client = AsyncFileforge(
     api_key="YOUR_API_KEY",
-    username="YOUR_USERNAME",
-    password="YOUR_PASSWORD",
+    api_key="YOUR_API_KEY",
 )
 ```
 <!-- End Async Usage  -->
