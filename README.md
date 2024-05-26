@@ -21,7 +21,7 @@ pip install --upgrade fileforge
 from fileforge.client import Fileforge
 
 client = Fileforge(
-    header="YOUR_HEADER",
+    api_key="YOUR_API_KEY",
 )
 ```
 <!-- End Usage  -->
@@ -33,7 +33,7 @@ client = Fileforge(
 from fileforge.client import AsyncFileforge
 
 client = AsyncFileforge(
-    header="YOUR_HEADER",
+    api_key="YOUR_API_KEY",
 )
 ```
 <!-- End Async Usage  -->
