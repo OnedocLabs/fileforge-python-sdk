@@ -27,7 +27,7 @@ class BaseClientWrapper:
         headers: typing.Dict[str, str] = {
             "X-Fern-Language": "Python",
             "X-Fern-SDK-Name": "fileforge",
-            "X-Fern-SDK-Version": "0.0.13",
+            "X-Fern-SDK-Version": "0.1.0",
         }
         username = self._get_username()
         password = self._get_password()
