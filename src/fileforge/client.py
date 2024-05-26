@@ -47,7 +47,6 @@ class Fileforge:
 
 
     api_key : str
-    api_key : str
     timeout : typing.Optional[float]
         The timeout to be used, in seconds, for requests by default the timeout is 60 seconds, unless a custom httpx client is used, in which case a default is not set.
 
@@ -63,7 +62,6 @@ class Fileforge:
 
     client = Fileforge(
         api_key="YOUR_API_KEY",
-        api_key="YOUR_API_KEY",
     )
     """
 
@@ -73,7 +71,6 @@ class Fileforge:
         base_url: typing.Optional[str] = None,
         environment: FileforgeEnvironment = FileforgeEnvironment.DEFAULT,
         api_key: str,
-        api_key: str,
         timeout: typing.Optional[float] = None,
         follow_redirects: typing.Optional[bool] = True,
         httpx_client: typing.Optional[httpx.Client] = None,
@@ -81,7 +78,6 @@ class Fileforge:
         _defaulted_timeout = timeout if timeout is not None else 60 if httpx_client is None else None
         self._client_wrapper = SyncClientWrapper(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            api_key=api_key,
             api_key=api_key,
             httpx_client=httpx_client
             if httpx_client is not None
@@ -107,7 +103,6 @@ class Fileforge:
         from fileforge.client import Fileforge
 
         client = Fileforge(
-            api_key="YOUR_API_KEY",
             api_key="YOUR_API_KEY",
         )
         client.retrieve_server_status()
@@ -212,7 +207,6 @@ class Fileforge:
 
         client = Fileforge(
             api_key="YOUR_API_KEY",
-            api_key="YOUR_API_KEY",
         )
         client.convert_docx()
         """
@@ -294,7 +288,6 @@ class Fileforge:
 
         client = Fileforge(
             api_key="YOUR_API_KEY",
-            api_key="YOUR_API_KEY",
         )
         client.generate()
         """
@@ -375,7 +368,6 @@ class Fileforge:
 
         client = Fileforge(
             api_key="YOUR_API_KEY",
-            api_key="YOUR_API_KEY",
         )
         client.merge()
         """
@@ -445,7 +437,6 @@ class AsyncFileforge:
 
 
     api_key : str
-    api_key : str
     timeout : typing.Optional[float]
         The timeout to be used, in seconds, for requests by default the timeout is 60 seconds, unless a custom httpx client is used, in which case a default is not set.
 
@@ -461,7 +452,6 @@ class AsyncFileforge:
 
     client = AsyncFileforge(
         api_key="YOUR_API_KEY",
-        api_key="YOUR_API_KEY",
     )
     """
 
@@ -471,7 +461,6 @@ class AsyncFileforge:
         base_url: typing.Optional[str] = None,
         environment: FileforgeEnvironment = FileforgeEnvironment.DEFAULT,
         api_key: str,
-        api_key: str,
         timeout: typing.Optional[float] = None,
         follow_redirects: typing.Optional[bool] = True,
         httpx_client: typing.Optional[httpx.AsyncClient] = None,
@@ -479,7 +468,6 @@ class AsyncFileforge:
         _defaulted_timeout = timeout if timeout is not None else 60 if httpx_client is None else None
         self._client_wrapper = AsyncClientWrapper(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            api_key=api_key,
             api_key=api_key,
             httpx_client=httpx_client
             if httpx_client is not None
@@ -505,7 +493,6 @@ class AsyncFileforge:
         from fileforge.client import AsyncFileforge
 
         client = AsyncFileforge(
-            api_key="YOUR_API_KEY",
             api_key="YOUR_API_KEY",
         )
         await client.retrieve_server_status()
@@ -610,7 +597,6 @@ class AsyncFileforge:
 
         client = AsyncFileforge(
             api_key="YOUR_API_KEY",
-            api_key="YOUR_API_KEY",
         )
         await client.convert_docx()
         """
@@ -692,7 +678,6 @@ class AsyncFileforge:
 
         client = AsyncFileforge(
             api_key="YOUR_API_KEY",
-            api_key="YOUR_API_KEY",
         )
         await client.generate()
         """
@@ -772,7 +757,6 @@ class AsyncFileforge:
         from fileforge.client import AsyncFileforge
 
         client = AsyncFileforge(
-            api_key="YOUR_API_KEY",
             api_key="YOUR_API_KEY",
         )
         await client.merge()

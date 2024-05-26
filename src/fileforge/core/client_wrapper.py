@@ -8,8 +8,7 @@ from .http_client import AsyncHttpClient, HttpClient
 
 
 class BaseClientWrapper:
-    def __init__(self, *, api_key: str, api_key: str, base_url: str, timeout: typing.Optional[float] = None):
-        self._api_key = api_key
+    def __init__(self, *, api_key: str, base_url: str, timeout: typing.Optional[float] = None):
         self.api_key = api_key
         self._base_url = base_url
         self._timeout = timeout
@@ -20,7 +19,6 @@ class BaseClientWrapper:
             "X-Fern-SDK-Name": "fileforge",
             "X-Fern-SDK-Version": "0.1.3",
         }
-        headers["X-API-Key"] = self._api_key
         headers["X-API-Key"] = self.api_key
         return headers
 
@@ -33,27 +31,15 @@ class BaseClientWrapper:
 
 class SyncClientWrapper(BaseClientWrapper):
     def __init__(
-        self,
-        *,
-        api_key: str,
-        api_key: str,
-        base_url: str,
-        timeout: typing.Optional[float] = None,
-        httpx_client: httpx.Client
+        self, *, api_key: str, base_url: str, timeout: typing.Optional[float] = None, httpx_client: httpx.Client
     ):
-        super().__init__(api_key=api_key, api_key=api_key, base_url=base_url, timeout=timeout)
+        super().__init__(api_key=api_key, base_url=base_url, timeout=timeout)
         self.httpx_client = HttpClient(httpx_client=httpx_client)
 
 
 class AsyncClientWrapper(BaseClientWrapper):
     def __init__(
-        self,
-        *,
-        api_key: str,
-        api_key: str,
-        base_url: str,
-        timeout: typing.Optional[float] = None,
-        httpx_client: httpx.AsyncClient
+        self, *, api_key: str, base_url: str, timeout: typing.Optional[float] = None, httpx_client: httpx.AsyncClient
     ):
-        super().__init__(api_key=api_key, api_key=api_key, base_url=base_url, timeout=timeout)
+        super().__init__(api_key=api_key, base_url=base_url, timeout=timeout)
         self.httpx_client = AsyncHttpClient(httpx_client=httpx_client)

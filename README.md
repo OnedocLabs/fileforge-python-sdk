@@ -22,7 +22,6 @@ from fileforge.client import Fileforge
 
 client = Fileforge(
     api_key="YOUR_API_KEY",
-    api_key="YOUR_API_KEY",
 )
 ```
 <!-- End Usage  -->
@@ -34,7 +33,6 @@ client = Fileforge(
 from fileforge.client import AsyncFileforge
 
 client = AsyncFileforge(
-    api_key="YOUR_API_KEY",
     api_key="YOUR_API_KEY",
 )
 ```
