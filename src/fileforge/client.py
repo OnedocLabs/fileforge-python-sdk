@@ -28,7 +28,24 @@ from .types.merge_request_options import MergeRequestOptions
 # this is used as the default value for optional parameters
 OMIT = typing.cast(typing.Any, ...)
 
+import httpx
+from typing import Optional, Any, Union, Iterator
 
+class CustomResponse:
+
+    def __init__(self, response: httpx.Response, json_body: Optional[Any] = None, file: Optional[Iterator[bytes]] = None):
+        self.response = response
+        self.json_body = json_body
+        self.file = file
+
+    def json(self):
+        if self.json_body is not None:
+            return self.json_body
+        return self.response.json()
+
+    def __getattr__(self, item):
+        return getattr(self.response, item)
+    
 class Fileforge:
     """
     Use this class to access the different functions within the SDK. You can instantiate any number of clients with different configuration that will propagate to these functions.
@@ -340,9 +357,16 @@ class Fileforge:
             max_retries=request_options.get("max_retries") if request_options is not None else 0,  # type: ignore
         ) as _response:
             if 200 <= _response.status_code < 300:
-                for _chunk in _response.iter_bytes():
-                    yield _chunk
-                return
+                content_type = _response.headers.get('content-type', '')
+                if content_type.startswith('application/json'):
+                    json_body = json.loads(_response.read())
+                    return CustomResponse(_response, json_body= json_body)
+                elif content_type.startswith('application/pdf'):
+                    
+                    return {"file": _response.iter_bytes()}
+                else:
+                    return CustomResponse(_response)
+            
             _response.read()
             if _response.status_code == 400:
                 raise BadRequestError(pydantic_v1.parse_obj_as(ErrorSchema, _response.json()))  # type: ignore
