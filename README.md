@@ -1,12 +1,10 @@
-# FileForge Python Library
+# Fileforge Python Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
-The FileForge Python Library provides convenient access to the FileForge API from 
-applications written in Python. 
+The Fileforge Python Library provides convenient access to the Fileforge API from applications written in Python. 
 
-The library includes type definitions for all 
-request and response fields, and offers both synchronous and asynchronous clients powered by httpx.
+The library includes type definitions for all request and response fields, and offers both synchronous and asynchronous clients powered by httpx.
 
 ## Installation
 
@@ -19,13 +17,13 @@ poetry add fileforge
 ```
 
 ## Usage
-Simply import `FileForge` and start making calls to our API. 
+Simply import `Fileforge` and start making calls to our API. 
 
 ```python
 from fileforge import GenerateRequestOptions
-from fileforge.client import FileForge
+from fileforge.client import Fileforge
 
-client = FileForge(
+client = Fileforge(
     api_key="YOUR_API_KEY" # Defaults to FILEFORGE_API_KEY
 )
 client.generate(
@@ -40,9 +38,9 @@ calls to our API.
 
 ```python
 from fileforge import GenerateRequestOptions
-from fileforge.client import AsyncFileForge
+from fileforge.client import AsyncFileforge
 
-client = AsyncFileForge(
+client = AsyncFileforge(
     api_key="YOUR_API_KEY"  # Defaults to FILEFORGE_API_KEY
 )
 
@@ -74,9 +72,9 @@ By default, requests time out after 60 seconds. You can configure this with a
 timeout option at the client or request level.
 
 ```python
-from fileforge.client import FileForge
+from fileforge.client import Fileforge
 
-client = FileForge(
+client = Fileforge(
     # All timeouts are 20 seconds
     timeout=20.0,
 )
@@ -113,9 +111,9 @@ include support for proxies and transports.
 ```python
 import httpx
 
-from fileforge.client import FileForge
+from fileforge.client import Fileforge
 
-client = FileForge(
+client = Fileforge(
     http_client=httpx.Client(
         proxies="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
